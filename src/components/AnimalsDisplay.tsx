@@ -18,7 +18,7 @@ export const AnimalsDisplay = (props: IAnimalsDisplayProps) => {
                 height="200"
               />
             </div>
-            <button className={animal.isFed ? "fed" : "notFed"}>Mata</button>
+            <button disabled={animal.isFed ? true : false}>Mata</button>
           </div>
         ))}
       </section>
