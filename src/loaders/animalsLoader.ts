@@ -1,7 +1,7 @@
-export const animalsLoader = () => {
-  // get animals from LocalStorage
+import { getAnimals } from "../services/animalService";
 
-  const animals = "monkeys";
+export const animalsLoader = async () => {
+  const response = getAnimals();
 
-  return animals;
+  return (await response).data;
 };
