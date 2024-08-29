@@ -10,7 +10,6 @@ export const AnimalsDisplay = (props: IAnimalsDisplayProps) => {
         {props.animals.map((animal) => (
           <div key={animal.id}>
             <Link to={`/animal/${animal.id}`}>{animal.name}</Link>
-            <h4>{animal.latinName}</h4>
             <div>
               <img
                 src={animal.imageUrl}
@@ -23,13 +22,7 @@ export const AnimalsDisplay = (props: IAnimalsDisplayProps) => {
                 height="200"
               />
             </div>
-            <p>
-              {animal.name} åt senast{" "}
-              {/* {animal.lastFed.split(".")[0].replace("T", " ")} */}
-            </p>
-            <button disabled={animal.isFed ? true : false}>
-              Mata genom staketet
-            </button>
+            <p>{animal.shortDescription}</p>
           </div>
         ))}
       </section>

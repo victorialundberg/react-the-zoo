@@ -1,6 +1,7 @@
 import { IAnimal } from "../models/IAnimal";
 interface IAnimalDisplayProps {
   animal: IAnimal;
+  feedAnimal: () => void;
 }
 export const AnimalDisplay = (props: IAnimalDisplayProps) => {
   return (
@@ -22,9 +23,12 @@ export const AnimalDisplay = (props: IAnimalDisplayProps) => {
           <p>{props.animal.longDescription}</p>
           <p>
             {props.animal.name} åt senast{" "}
-            {/* {props.animal.lastFed.split(".")[0].replace("T", " ")} */}
+            {props.animal.lastFed.split(".")[0].replace("T", " ")}
           </p>
-          <button disabled={props.animal.isFed ? true : false}>
+          <button
+            onClick={props.feedAnimal}
+            disabled={props.animal.isFed ? true : false}
+          >
             Mata {props.animal.name}
           </button>
         </div>

@@ -6,9 +6,13 @@ import { useState } from "react";
 export const Animal = () => {
   const [animal, setAnimal] = useState<IAnimal>(useLoaderData() as IAnimal);
 
+  const feedAnimal = () => {
+    setAnimal({ ...animal, isFed: true });
+  };
+
   return (
     <>
-      <AnimalDisplay animal={animal}></AnimalDisplay>
+      <AnimalDisplay animal={animal} feedAnimal={feedAnimal}></AnimalDisplay>
     </>
   );
 };

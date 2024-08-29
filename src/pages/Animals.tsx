@@ -22,3 +22,5 @@ export const Animals = () => {
     </>
   );
 };
+
+// Ev flytta local storage till loader
