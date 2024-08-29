@@ -3,8 +3,6 @@ interface IAnimalDisplayProps {
   animal: IAnimal;
 }
 export const AnimalDisplay = (props: IAnimalDisplayProps) => {
-  console.log(props.animal);
-
   return (
     <>
       <section className="animals">
@@ -14,6 +12,10 @@ export const AnimalDisplay = (props: IAnimalDisplayProps) => {
           <img
             src={props.animal.imageUrl}
             alt={props.animal.name}
+            onError={(e) => {
+              e.currentTarget.src =
+                "https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png       ";
+            }}
             width="400"
             height="400"
           />
