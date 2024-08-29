@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { IAnimal } from "../models/IAnimal";
 interface IAnimalsDisplayProps {
   animals: IAnimal[];
@@ -5,10 +6,10 @@ interface IAnimalsDisplayProps {
 export const AnimalsDisplay = (props: IAnimalsDisplayProps) => {
   return (
     <>
-      <section className="movies">
+      <section className="animals">
         {props.animals.map((animal) => (
           <div key={animal.id}>
-            <h3>{animal.name}</h3>
+            <Link to={`/animal/${animal.id}`}>{animal.name}</Link>
             <h4>{animal.latinName}</h4>
             <div>
               <img
@@ -18,7 +19,13 @@ export const AnimalsDisplay = (props: IAnimalsDisplayProps) => {
                 height="200"
               />
             </div>
-            <button disabled={animal.isFed ? true : false}>Mata</button>
+            <p>
+              {animal.name} åt senast{" "}
+              {/* {animal.lastFed.split(".")[0].replace("T", " ")} */}
+            </p>
+            <button disabled={animal.isFed ? true : false}>
+              Mata genom staketet
+            </button>
           </div>
         ))}
       </section>

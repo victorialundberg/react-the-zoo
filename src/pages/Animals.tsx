@@ -16,5 +16,9 @@ export const Animals = () => {
     }
   });
 
-  return <AnimalsDisplay animals={animals}></AnimalsDisplay>;
+  return (
+    <>
+      <AnimalsDisplay animals={animals}></AnimalsDisplay>
+    </>
+  );
 };
