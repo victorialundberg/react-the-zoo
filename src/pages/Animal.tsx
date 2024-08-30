@@ -14,7 +14,8 @@ export const Animal = () => {
       console.log("djuret finns");
 
       const animals = JSON.parse(storedAnimals).map((animal: IAnimal) => {
-        if (animal.id === id) return { ...animal, isFed: true };
+        if (animal.id === id)
+          return { ...animal, isFed: true, lastFed: new Date().toISOString() };
         else return animal;
       });
       console.log("djuret ändrades");

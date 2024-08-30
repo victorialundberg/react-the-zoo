@@ -7,9 +7,11 @@ interface IAnimalDisplayProps {
 
 export const AnimalDisplay = (props: IAnimalDisplayProps) => {
   const [isFed, setIsFed] = useState(props.animal.isFed);
+  const [lastFed, setLastFed] = useState(props.animal.lastFed);
 
   const handleClick = () => {
     setIsFed(true);
+    setLastFed(new Date().toISOString());
     props.feedAnimal(props.animal.id);
   };
   return (
@@ -31,7 +33,7 @@ export const AnimalDisplay = (props: IAnimalDisplayProps) => {
           <p>{props.animal.longDescription}</p>
           <p>
             {props.animal.name} åt senast{" "}
-            {props.animal.lastFed.split(".")[0].replace("T", " ")}
+            {lastFed.split(".")[0].replace("T", " ")}
           </p>
           <button onClick={handleClick} disabled={isFed ? true : false}>
             Mata {props.animal.name}
