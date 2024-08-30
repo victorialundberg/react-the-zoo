@@ -1,26 +1,23 @@
 import { Params } from "react-router-dom";
 import { IAnimal } from "../models/IAnimal";
+import { animalsLoader } from "./animalsLoader";
 
 interface IAnimalLoader {
   params: Params<string>;
 }
 
-export const animalLoader = ({
+export const animalLoader = async ({
   params,
-}: IAnimalLoader): IAnimal | { error: string } => {
-  const storedAnimals = localStorage.getItem("animals");
-
-  if (!storedAnimals) {
-    return { error: "Alla djur verkar ha rymt!" };
-  }
-
-  const animals: IAnimal[] = JSON.parse(storedAnimals);
+}: IAnimalLoader): Promise<IAnimal> => {
+  const animals = await animalsLoader();
   const displayAnimal = animals.find(
     (animal) => animal.id === Number(params.id)
   );
 
+  console.log(displayAnimal);
+
   if (!displayAnimal) {
-    return { error: "Någon har visst gått och gömt sig!" };
+    throw new Error("Djuret hittas inte");
   }
 
   return displayAnimal;
