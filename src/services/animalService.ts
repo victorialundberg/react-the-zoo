@@ -4,7 +4,7 @@ import { get } from "./serviceBase";
 const BASE_URL = "https://animals.azurewebsites.net/api/animals";
 
 export const getAnimals = async () => {
-  const response = await get<IAnimal>(BASE_URL);
+  const response = await get<IAnimal[]>(BASE_URL);
 
-  return response;
+  return response.data;
 };
