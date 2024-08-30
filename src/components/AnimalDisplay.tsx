@@ -8,10 +8,25 @@ interface IAnimalDisplayProps {
 export const AnimalDisplay = (props: IAnimalDisplayProps) => {
   const [isFed, setIsFed] = useState(props.animal.isFed);
   const [lastFed, setLastFed] = useState(props.animal.lastFed);
+  const currentTime = new Date();
+
+  console.log("Last fed: ", props.animal.lastFed);
+  console.log("Current time: ", currentTime);
+
+  const checkTime = () => {
+    const storedTime = new Date(props.animal.lastFed);
+    const timeDifference = currentTime.getTime() - storedTime.getTime();
+    const threeHours = 108000000;
+
+    console.log("Time sinsce fed: ", timeDifference);
+    console.log("Stored time: ", storedTime);
+
+    return timeDifference >= threeHours;
+  };
 
   const handleClick = () => {
     setIsFed(true);
-    setLastFed(new Date().toISOString());
+    setLastFed(currentTime.toISOString());
     props.feedAnimal(props.animal.id);
   };
   return (
@@ -31,11 +46,12 @@ export const AnimalDisplay = (props: IAnimalDisplayProps) => {
             height="400"
           />
           <p>{props.animal.longDescription}</p>
+          {isFed ? <p>Jag är mätt</p> : <p>Jag är hungrig</p>}
           <p>
             {props.animal.name} åt senast{" "}
             {lastFed.split(".")[0].replace("T", " ")}
           </p>
-          <button onClick={handleClick} disabled={isFed ? true : false}>
+          <button onClick={handleClick} disabled={!checkTime() || isFed}>
             Mata {props.animal.name}
           </button>
         </div>
