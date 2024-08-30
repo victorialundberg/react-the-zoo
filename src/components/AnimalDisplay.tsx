@@ -1,9 +1,17 @@
+import { useState } from "react";
 import { IAnimal } from "../models/IAnimal";
 interface IAnimalDisplayProps {
   animal: IAnimal;
-  feedAnimal: () => void;
+  feedAnimal: (id: number) => void;
 }
+
 export const AnimalDisplay = (props: IAnimalDisplayProps) => {
+  const [isFed, setIsFed] = useState(props.animal.isFed);
+
+  const handleClick = () => {
+    setIsFed(true);
+    props.feedAnimal(props.animal.id);
+  };
   return (
     <>
       <section className="animals">
@@ -25,10 +33,7 @@ export const AnimalDisplay = (props: IAnimalDisplayProps) => {
             {props.animal.name} åt senast{" "}
             {props.animal.lastFed.split(".")[0].replace("T", " ")}
           </p>
-          <button
-            onClick={props.feedAnimal}
-            disabled={props.animal.isFed ? true : false}
-          >
+          <button onClick={handleClick} disabled={isFed ? true : false}>
             Mata {props.animal.name}
           </button>
         </div>
