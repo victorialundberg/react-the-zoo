@@ -10,6 +10,7 @@ export const AnimalsDisplay = (props: IAnimalsDisplayProps) => {
         {props.animals.map((animal) => (
           <div key={animal.id}>
             <Link to={`/animal/${animal.id}`}>{animal.name}</Link>
+            {!animal.isFed && <p>Jag är hungrig</p>}
             <div>
               <img
                 src={animal.imageUrl}
