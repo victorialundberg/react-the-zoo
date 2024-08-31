@@ -8,7 +8,7 @@ interface IAnimalDisplayProps {
 }
 
 export const AnimalDisplay = (props: IAnimalDisplayProps) => {
-  // props.checkIfFed(props.animal.id);
+  props.checkIfFed(props.animal.id);
 
   const [isFed, setIsFed] = useState(props.animal.isFed);
   const [lastFed, setLastFed] = useState(props.animal.lastFed);
