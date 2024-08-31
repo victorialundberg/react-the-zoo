@@ -4,6 +4,8 @@ interface IAnimalsDisplayProps {
   animals: IAnimal[];
 }
 export const AnimalsDisplay = (props: IAnimalsDisplayProps) => {
+  console.log(props.animals);
+
   return (
     <>
       <section className="animals">

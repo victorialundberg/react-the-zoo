@@ -1,32 +1,22 @@
 import { useState } from "react";
 import { IAnimal } from "../models/IAnimal";
+import { formatTime } from "../utils/formatTime";
 interface IAnimalDisplayProps {
   animal: IAnimal;
   feedAnimal: (id: number) => void;
+  checkIfFed: (id: number) => void;
 }
 
 export const AnimalDisplay = (props: IAnimalDisplayProps) => {
+  // props.checkIfFed(props.animal.id);
+
   const [isFed, setIsFed] = useState(props.animal.isFed);
   const [lastFed, setLastFed] = useState(props.animal.lastFed);
-  const currentTime = new Date();
-
-  console.log("Last fed: ", props.animal.lastFed);
-  console.log("Current time: ", currentTime);
-
-  const checkTime = () => {
-    const storedTime = new Date(props.animal.lastFed);
-    const timeDifference = currentTime.getTime() - storedTime.getTime();
-    const threeHours = 108000000;
-
-    console.log("Time sinsce fed: ", timeDifference);
-    console.log("Stored time: ", storedTime);
-
-    return timeDifference >= threeHours;
-  };
+  const formattedCurrentTime = formatTime(new Date());
 
   const handleClick = () => {
     setIsFed(true);
-    setLastFed(currentTime.toISOString());
+    setLastFed(formattedCurrentTime.toString());
     props.feedAnimal(props.animal.id);
   };
   return (
@@ -51,7 +41,7 @@ export const AnimalDisplay = (props: IAnimalDisplayProps) => {
             {props.animal.name} åt senast{" "}
             {lastFed.split(".")[0].replace("T", " ")}
           </p>
-          <button onClick={handleClick} disabled={!checkTime() || isFed}>
+          <button onClick={handleClick} disabled={isFed}>
             Mata {props.animal.name}
           </button>
         </div>
