@@ -5,6 +5,7 @@ interface IAnimalDisplayProps {
   animal: IAnimal;
   feedAnimal: (id: number) => void;
   checkIfFed: (id: number) => void;
+  checkIfStarving: (id: number) => boolean;
 }
 
 export const AnimalDisplay = (props: IAnimalDisplayProps) => {
@@ -36,7 +37,12 @@ export const AnimalDisplay = (props: IAnimalDisplayProps) => {
             height="400"
           />
           <p>{props.animal.longDescription}</p>
-          {isFed ? <p>Jag är mätt</p> : <p>Jag är hungrig</p>}
+          {props.checkIfStarving(props.animal.id) && (
+            <p className="isStarving">
+              {props.animal.name} har inte ätit på fyra timmar!
+            </p>
+          )}
+          {/* {isFed ? <p>Jag är mätt</p> : <p>Jag är hungrig</p>} */}
           <p>
             {props.animal.name} åt senast{" "}
             {lastFed.split(".")[0].replace("T", " ")}
