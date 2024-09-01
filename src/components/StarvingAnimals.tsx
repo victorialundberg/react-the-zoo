@@ -9,12 +9,15 @@ export const StarvingAnimals = (props: IAnimalsDisplayProps) => {
   return (
     <>
       <section className="starvingAnimals">
-        <p>Dessa djur måste äta!</p>
         {props.animals
           .filter((animal) => props.checkIfStarving(animal.id))
           .map((animal) => (
             <div key={animal.id}>
-              <Link to={`/animal/${animal.id}`}>{animal.name}</Link>
+              <button className="goToStarvingAnimalBtn">
+                <Link to={`/animal/${animal.id}`}>
+                  {animal.name} behöver äta!
+                </Link>
+              </button>
             </div>
           ))}
       </section>

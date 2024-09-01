@@ -3,15 +3,15 @@ import { NavLink, Outlet } from "react-router-dom";
 export const Layout = () => {
   return (
     <>
-      <header>
-        <h1>The Zoo</h1>
+      <header className="header">
+        <h1>What'Z OOp?</h1>
         <nav>
           <ul>
             <li>
-              <NavLink to={"/"}>Home</NavLink>
+              <NavLink to={"/"}>Hem</NavLink>
             </li>
             <li>
-              <NavLink to={"/animals"}>The Animals</NavLink>
+              <NavLink to={"/animals"}>Till djuren</NavLink>
             </li>
           </ul>
         </nav>
