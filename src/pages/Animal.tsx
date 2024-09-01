@@ -2,23 +2,23 @@ import { useLoaderData } from "react-router-dom";
 import { AnimalDisplay } from "../components/AnimalDisplay";
 import { IAnimal } from "../models/IAnimal";
 import { formatTime } from "../utils/formatTime";
+import { getTimeDifference } from "../utils/getTimeDifference";
 
 export const Animal = () => {
   const animal = useLoaderData() as IAnimal;
 
   const checkIfFed = (id: number) => {
     const storedAnimals = localStorage.getItem("animals");
-    if (!storedAnimals) return;
-    const animals = JSON.parse(storedAnimals);
-    const foundAnimal = animals.find((animal: IAnimal) => animal.id === id);
-    const storedTime = new Date(foundAnimal.lastFed);
-    const currentTime = new Date();
-    const timeDifference = currentTime.getTime() - storedTime.getTime();
+    const timeDifference = getTimeDifference(id);
     const threeHours = 10800000;
 
     if (storedAnimals) {
       const animals = JSON.parse(storedAnimals).map((animal: IAnimal) => {
-        if (animal.id === id && timeDifference >= threeHours)
+        if (
+          animal.id === id &&
+          timeDifference !== null &&
+          timeDifference >= threeHours
+        )
           return { ...animal, isFed: false };
         else return animal;
       });
