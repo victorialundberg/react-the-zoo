@@ -26,6 +26,21 @@ export const Animal = () => {
     }
   };
 
+  const checkIfStarving = (id: number) => {
+    const storedAnimals = localStorage.getItem("animals");
+    const timeDifference = getTimeDifference(id);
+    const fourHours = 14400000;
+
+    if (storedAnimals && timeDifference !== null) {
+      const foundAnimal = JSON.parse(storedAnimals).find(
+        (animal: IAnimal) => animal.id === id
+      );
+      return foundAnimal ? timeDifference >= fourHours : false;
+    }
+
+    return false;
+  };
+
   const feedAnimal = (id: number) => {
     const storedAnimals = localStorage.getItem("animals");
     const formattedCurrentTime = formatTime(new Date());
@@ -46,6 +61,7 @@ export const Animal = () => {
         animal={animal}
         feedAnimal={feedAnimal}
         checkIfFed={checkIfFed}
+        checkIfStarving={checkIfStarving}
       ></AnimalDisplay>
     </>
   );
