@@ -59,3 +59,16 @@ body {
     }
   }
 }
+.starvingAnimals {
+  display: flex;
+  gap: 20px;
+  .starvingAnimalsAnimal {
+    padding: 10px 0;
+    .starvingAnimalLink {
+      color: red;
+    }
+  }
+}
+.isStarving {
+  color: red;
+}

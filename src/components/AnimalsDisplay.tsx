@@ -23,11 +23,11 @@ export const AnimalsDisplay = (props: IAnimalsDisplayProps) => {
                 height="300"
               />
             </div>
-            {animal.isFed ? (
+            {/* {animal.isFed ? (
               <p className="isFull">Jag är mätt</p>
             ) : (
               <p className="isHungry">Jag är hungrig</p>
-            )}
+            )} */}
             <button className="goToAnimalBtn">
               <Link to={`/animal/${animal.id}`}>Gå in till {animal.name}</Link>
             </button>
