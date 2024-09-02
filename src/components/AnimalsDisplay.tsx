@@ -11,7 +11,7 @@ export const AnimalsDisplay = (props: IAnimalsDisplayProps) => {
       <section className="animals">
         {props.animals.map((animal) => (
           <div key={animal.id} className="animalsDisplayAnimal">
-            <h4 className="animalHeading">{animal.name}</h4>
+            <h4 className="animalsHeading">{animal.name}</h4>
             <div>
               <img
                 className="animalsImg"
@@ -24,16 +24,13 @@ export const AnimalsDisplay = (props: IAnimalsDisplayProps) => {
                 height="300"
               />
             </div>
-            {/* {animal.isFed ? (
-              <p className="isFull">Jag är mätt</p>
-            ) : (
-              <p className="isHungry">Jag är hungrig</p>
-            )} */}
             <button className="goToAnimalBtn">
-              <Link to={`/animal/${animal.id}`}>Gå in till {animal.name}</Link>
+              <Link className="goToAnimalLink" to={`/animal/${animal.id}`}>
+                Gå in till {animal.name}
+              </Link>
             </button>
 
-            <p>{animal.shortDescription}</p>
+            <p className="animalShortDescription">{animal.shortDescription}</p>
           </div>
         ))}
       </section>

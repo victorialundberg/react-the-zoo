@@ -24,33 +24,37 @@ export const AnimalDisplay = (props: IAnimalDisplayProps) => {
   };
   return (
     <>
-      <section className="animals">
+      <section className="animal">
         <h2>{props.animal.name}</h2>
         <h4>{props.animal.latinName}</h4>
-        <div>
+        <div className="animalImgContainer">
           <img
+            className="animalImg"
             src={props.animal.imageUrl}
             alt={props.animal.name}
             onError={(e) => {
               e.currentTarget.src = notFoundImg;
             }}
-            width="400"
-            height="400"
+            width="300"
+            height="300"
           />
-          <p>{props.animal.longDescription}</p>
-          {props.checkIfStarving(props.animal.id) && (
-            <p className="isStarving">
-              {props.animal.name} har inte ätit på fyra timmar!
-            </p>
-          )}
-          <p>
-            {props.animal.name} åt senast{" "}
-            {lastFed.split(".")[0].replace("T", " ")}
-          </p>
-          <button onClick={handleClick} disabled={isFed}>
-            Mata {props.animal.name}
-          </button>
         </div>
+        <p className="longDescription">{props.animal.longDescription}</p>
+        {props.checkIfStarving(props.animal.id) && (
+          <p className="isStarving">
+            {props.animal.name} har inte ätit på över fyra timmar!
+          </p>
+        )}
+        <p className="lastFed">
+          Åt senast {lastFed.split(".")[0].replace("T", " ")}
+        </p>
+        <button
+          className="feedAnimalBtn"
+          onClick={handleClick}
+          disabled={isFed}
+        >
+          Mata {props.animal.name}
+        </button>
       </section>
     </>
   );

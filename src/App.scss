@@ -2,6 +2,7 @@
 
 body {
   font-family: "Barlow Condensed", sans-serif;
+  background-color: rgb(228, 245, 230);
   a {
     text-decoration: none;
     color: black;
@@ -32,6 +33,7 @@ body {
     li {
       list-style: none;
       font-size: 4em;
+      text-transform: uppercase;
       :hover {
         text-decoration: underline;
       }
@@ -42,33 +44,106 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   .animalsDisplayAnimal {
+    background-color: white;
     display: grid;
     justify-items: center;
     margin: 10px;
     padding: 0 50px;
-    border-radius: 5%;
-    border: 1px solid black;
+    border-radius: 10px;
+    .animalsHeading {
+      font-size: 2.5rem;
+      margin: 0;
+      margin-bottom: 20px;
+      padding-top: 1rem;
+    }
     .animalsImg {
       object-fit: scale-down;
     }
-    .isFull {
-      color: green;
+    .goToAnimalBtn {
+      margin-top: 20px;
+      min-height: 45px;
+      padding: 20px;
+      font-size: 1em;
+      background-color: rgba(128, 178, 127, 0.308);
+      border: none;
+      border-radius: 20px;
+      :hover {
+        text-decoration: underline;
+      }
     }
-    .isHungry {
-      color: red;
+    .animalShortDescription {
+      padding: 30px 0;
     }
   }
 }
 .starvingAnimals {
+  background-color: white;
+  padding: 0 5px;
+  border-radius: 10px;
+  margin-top: 10px;
   display: flex;
   gap: 20px;
   .starvingAnimalsAnimal {
     padding: 10px 0;
-    .starvingAnimalLink {
+    .starvingAnimal {
       color: red;
     }
   }
 }
 .isStarving {
   color: red;
+}
+
+.animal {
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 50px;
+  padding: 50px;
+  border-radius: 20px;
+  justify-items: center;
+  h2,
+  h4,
+  .lastFed,
+  .isStarving,
+  .feedAnimalBtn {
+    grid-column-start: 1;
+    margin: 0;
+  }
+  h2 {
+    font-size: 3rem;
+  }
+  h4 {
+    font-size: 2rem;
+    padding-bottom: 20px;
+    font-weight: 100;
+  }
+  .animalImgContainer {
+    grid-column: 1;
+    .animalImg {
+      object-fit: scale-down;
+    }
+  }
+
+  .feedAnimalBtn {
+    margin-top: 20px;
+    min-height: 45px;
+    max-width: 200px;
+    padding: 20px;
+    font-size: 1em;
+    background-color: rgba(128, 178, 127, 0.308);
+    border: none;
+    border-radius: 20px;
+    :hover {
+      text-decoration: underline;
+    }
+  }
+  .longDescription {
+    font-size: 1.5rem;
+    border: 2px solid rgba(128, 178, 127, 0.308);
+    border-radius: 10px;
+    padding: 40px;
+    font-weight: 200;
+    margin-top: 0;
+  }
 }

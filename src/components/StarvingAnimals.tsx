@@ -13,12 +13,7 @@ export const StarvingAnimals = (props: IAnimalsDisplayProps) => {
           .filter((animal) => props.checkIfStarving(animal.id))
           .map((animal) => (
             <div key={animal.id} className="starvingAnimalsAnimal">
-              <p
-                className="starvingAnimalLink"
-                // to={`/animal/${animal.id}`}
-              >
-                {animal.name} behöver äta!
-              </p>
+              <p className="starvingAnimal">{animal.name} behöver äta!</p>
             </div>
           ))}
       </section>
