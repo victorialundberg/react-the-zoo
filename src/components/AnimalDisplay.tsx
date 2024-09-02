@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { IAnimal } from "../models/IAnimal";
 import { formatTime } from "../utils/formatTime";
+import notFoundImg from "../assets/images/animalImgNotFound.png";
+
 interface IAnimalDisplayProps {
   animal: IAnimal;
   feedAnimal: (id: number) => void;
@@ -30,8 +32,7 @@ export const AnimalDisplay = (props: IAnimalDisplayProps) => {
             src={props.animal.imageUrl}
             alt={props.animal.name}
             onError={(e) => {
-              e.currentTarget.src =
-                "https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png       ";
+              e.currentTarget.src = notFoundImg;
             }}
             width="400"
             height="400"
@@ -42,7 +43,6 @@ export const AnimalDisplay = (props: IAnimalDisplayProps) => {
               {props.animal.name} har inte ätit på fyra timmar!
             </p>
           )}
-          {/* {isFed ? <p>Jag är mätt</p> : <p>Jag är hungrig</p>} */}
           <p>
             {props.animal.name} åt senast{" "}
             {lastFed.split(".")[0].replace("T", " ")}

@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { IAnimal } from "../models/IAnimal";
+import notFoundImg from "../assets/images/animalImgNotFound.png";
+
 interface IAnimalsDisplayProps {
   animals: IAnimal[];
 }
@@ -16,8 +18,7 @@ export const AnimalsDisplay = (props: IAnimalsDisplayProps) => {
                 src={animal.imageUrl}
                 alt={animal.name}
                 onError={(e) => {
-                  e.currentTarget.src =
-                    "https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png       ";
+                  e.currentTarget.src = notFoundImg;
                 }}
                 width="300"
                 height="300"
